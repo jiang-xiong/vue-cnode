@@ -33,5 +33,7 @@
   ul li {
     display: inline;
     color: #cccccc;
+    margin-right: 25px;
+    font-size: 13px;
   }
 </style>

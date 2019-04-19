@@ -13,7 +13,7 @@
   .aside {
     border: 1px solid black;
     min-height: 200vh;
-    min-width: 300px;
+    min-width: 290px;
     float: right;
     margin-top: 15px;
     margin-bottom: 15px;

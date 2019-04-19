@@ -1,6 +1,6 @@
 <template >
   <form id="search-form" action="" method="post">
-    <input >
+    <input>
   </form>
 </template>
 
@@ -15,13 +15,20 @@
     display: inline-block;
   }
   input {
-    border-radius: 15px;
+    border-radius: 2px;
     border: none;
     background: #888;
-    height: 23px;
-    width: 225px;
+    height: 26px;
+    width: 232px;
+    color: #666;
+    transition: all 0.3s;
+
   }
   input:focus{
     outline: none;
+  }
+  input:hover {
+    background-color: white;
+    transition: all 0.3s;
   }
 </style>

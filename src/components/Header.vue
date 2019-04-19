@@ -1,7 +1,9 @@
 <template >
   <div class="header">
-    <span id="header-left">
-      <Logo/>
+    <span id="header-left ">
+      <span id="header-left-logo">
+        <Logo/>
+      </span>
       <span id="header-left-search">
         <Search/>
       </span>
@@ -29,14 +31,24 @@
 
 <style scoped>
   .header {
-    /* border: 1px solid red; */
-    min-height: 54px;
-    width: 100%;
+    height: 50px;
+    width: 100vw;
     background: #444;
-    display: flex;
-    justify-content: space-between;
+  }
+  #header-left-logo {
+    position: relative;
+    left: 59px;
+    top: 8px;
   }
   #header-left-search {
-    margin-left: 12px;
+    position: relative;
+    top: 3px;
+    left: 80px;
   }
+  #header-right {
+    position: relative;
+    right: -995px;
+    bottom: 22px;
+  }
+
 </style>

@@ -42,4 +42,7 @@ export default {
   div[v-cloak] {
     display: none;
   }
+  #app {
+    overflow-x: hidden;
+  }
 </style>
