@@ -46,9 +46,13 @@
     left: 80px;
   }
   #header-right {
-    position: relative;
+    /* position: relative;
     right: -995px;
-    bottom: 22px;
+    bottom: 22px; */
+    float: right;
+    margin-top: 14px;
+    margin-right: 60px;
+
   }
 
 </style>

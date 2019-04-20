@@ -1,9 +1,13 @@
 <template >
   <ul id="nav-list">
-    <li v-for="item in titles">
-      <a href="#">
-        {{item.title}}
-      </a>
+    <li>
+      <a href="#">首页</a>
+    </li>
+    <li>
+      <a href="#">登陆</a>
+    </li>
+    <li>
+      <a href="#">注册</a>
     </li>
   </ul>
 </template>
@@ -11,21 +15,6 @@
 <script>
   export default {
     name: 'Nav',
-    data: function () {
-      return {
-        titles: [
-          {
-            title: '首页',
-          },
-          {
-            title: '登陆',
-          },
-          {
-            title: '注册',
-          },
-        ]
-      }
-    },
   }
 </script>
 

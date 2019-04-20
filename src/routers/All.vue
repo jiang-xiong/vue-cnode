@@ -1,5 +1,5 @@
 <template lang="html">
-  <div>bar</div>
+  <div>all</div>
 </template>
 
 <script>
