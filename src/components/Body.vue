@@ -1,6 +1,7 @@
 <template >
   <div class="body clearfix">
-    <Panel/>
+    <div v-show="true"
+    ><Panel/></div>
     <Aside/>
   </div>
 </template>
@@ -8,7 +9,6 @@
 <script>
   import Panel from './Panel.vue'
   import Aside from './Aside.vue'
-
 
   export default {
     name: 'Body',
@@ -30,4 +30,5 @@
     display: block;
     clear: both;
   }
+
 </style>

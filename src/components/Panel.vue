@@ -17,14 +17,15 @@
 
 <style scoped>
   .panel {
-    background: white;
+    /* background: white; */
     border-radius: 2px;
     box-shadow: 0px 0px 2px 1px rgba(235,226,235,1);
-    min-height: 200vh;
+    /* min-height: 200vh; */
     min-width: 778px;
     float: left;
     margin-top: 15px;
     margin-bottom: 15px;
     margin-left: 58px;
+    /* border: 1px solid black; */
   }
 </style>

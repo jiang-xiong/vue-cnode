@@ -2,7 +2,7 @@
   <div>
     <div class="bar clearfix">
       <div class="link">
-        <router-link to="/all"
+        <router-link to="/"
                      v-bind:class="{ active: showAll }"
                      v-on:click.native="hightLight('showAll')"
         >全部</router-link>
@@ -27,7 +27,7 @@
     name: 'Teb',
     data: function () {
       return {
-        showAll: false,
+        showAll: true,
         showGood: false,
         showWater: false,
       }
@@ -50,6 +50,8 @@
         this.showGood = true
       } else if (this.$route.path === '/water') {
         this.showWater = true
+      } else if (this.$route.path === '/') {
+        this.showAll = true
       }
     }
   }
