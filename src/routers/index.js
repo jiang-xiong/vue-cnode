@@ -4,6 +4,8 @@ import All from './All.vue'
 import Good from './Good.vue'
 import Water from './Water.vue'
 import Article from './Article'
+import SigUp from './SigUp.vue'
+
 
 Vue.use(VueRouter)
 
@@ -27,6 +29,10 @@ export default new VueRouter ({
     {
       path: '/water',
       component: Water,
+    },
+    {
+      path: '/sig-up',
+      component: SigUp,
     },
   ]
 })

@@ -1,15 +1,23 @@
 <template >
-  <ul id="nav-list">
-    <li>
-      <a href="#">首页</a>
-    </li>
-    <li>
-      <a href="#">登陆</a>
-    </li>
-    <li>
-      <a href="#">注册</a>
-    </li>
-  </ul>
+  <div>
+    <ul id="nav-list">
+      <li>
+        <router-link to='/'>首页</router-link>
+      </li>
+      <li>
+        <router-link to='/login'
+        >登陆</router-link>
+      </li>
+      <li>
+        <router-link to='/sign-up'
+        >注册</router-link>
+      </li>
+    </ul>
+    <!-- <div class="view">
+      <router-view></router-view>
+    </div> -->
+  </div>
+
 </template>
 
 <script>
@@ -24,5 +32,12 @@
     color: #cccccc;
     margin-right: 25px;
     font-size: 13px;
+  }
+  .view {
+    /* position: relative; */
+    /* left: 0px; */
+    /* width: 100px; */
+    border: 1px solid red;
+    z-index: 99;
   }
 </style>
