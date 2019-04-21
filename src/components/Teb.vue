@@ -23,6 +23,8 @@
 </template>
 
 <script>
+  import {mapGetters} from 'vuex';
+
   export default {
     name: 'Teb',
     data: function () {
@@ -44,16 +46,17 @@
       },
     },
     created: function () {
-      if(this.$route.path === '/all') {
+      if(this.$route.path === '/') {
+        this.showAll = true
+      } else if (this.$route.path === '/all') {
         this.showAll = true
       } else if (this.$route.path === '/good') {
         this.showGood = true
       } else if (this.$route.path === '/water') {
         this.showWater = true
-      } else if (this.$route.path === '/') {
-        this.showAll = true
       }
-    }
+    },
+    // computed: {...mapGetters(['gettersIsShowTeb'])}
   }
 </script>
 
@@ -84,6 +87,8 @@
     /* border: 1px solid red; */
     background-color: #f6f6f6;
     padding-bottom: 10px;
+    border-radius: 3px 3px 0 0;
+
   }
   .link {
     float: left;

@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import All from './All.vue'
 import Good from './Good.vue'
 import Water from './Water.vue'
-import AllArticle from './AllArticle.vue'
+import Article from './Article'
 
 Vue.use(VueRouter)
 
@@ -15,21 +15,11 @@ export default new VueRouter ({
       component: All,
       children: [
         {
-          path: 'all-article',
-          component: AllArticle
+          path: 'article',
+          component: Article,
         },
       ]
     },
-    // {
-    //   path: '/all',
-    //   component: All,
-    //   children: [
-    //     {
-    //       path: 'all-article',
-    //       component: AllArticle
-    //     },
-    //   ]
-    // },
     {
       path: '/good',
       component: Good,
@@ -38,5 +28,5 @@ export default new VueRouter ({
       path: '/water',
       component: Water,
     },
-  ],
+  ]
 })

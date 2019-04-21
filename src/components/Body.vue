@@ -1,7 +1,6 @@
 <template >
   <div class="body clearfix">
-    <div v-show="true"
-    ><Panel/></div>
+    <Panel/>
     <Aside/>
   </div>
 </template>

@@ -1,19 +1,13 @@
 <template>
-  <div class="">
-    <div class="topic">
-      <span>头像</span>
-      <span>评论数</span>
-      <span>类型</span>
-      <router-link to="all-article"
-                   append
-      >111</router-link>
+  <div>
+    <div class="topics" v-show='isShowTopics'>
+      <div class="topic">
+        <router-link to="article"
+                     @click.native='hideTopics'
+        >标题 1</router-link>
+      </div>
     </div>
-    <div class="topic">
-      <span>头像</span>
-      <span>评论数</span>
-      <span>类型</span>
-      <a href="#">标题</a>
-    </div>
+
     <div class="view">
       <router-view></router-view>
     </div>
@@ -21,19 +15,22 @@
 </template>
 
 <script>
-
 export default {
-
-}
-
+  data: function () {
+    return {
+      isShowTopics: true,
+    }
+  },
+  }
 </script>
 
 <style scoped>
   .topic {
     /* border: 1px solid red; */
     height: 50px;
-    margin-bottom: 1px;
+    /* margin-bottom: 1px; */
+    border-bottom: 1px solid #e5e5e5;
     background-color: white;
-    border-radius: 2px;
+    /* border-radius: 3px; */
   }
 </style>

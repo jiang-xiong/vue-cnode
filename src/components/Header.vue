@@ -52,7 +52,6 @@
     float: right;
     margin-top: 14px;
     margin-right: 60px;
-
   }
 
 </style>
