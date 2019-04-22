@@ -36,14 +36,14 @@ export default {
       password: '123',
     }
   },
-  created: function () {
-    var APP_ID = 'i4bhU8rykSDtrqbBJspGpW4f-9Nh9j0Va';
-    var APP_KEY = 'EkljqcRpiVbyvd8SkrGOnT2N';
-    AV.init({
-      appId: APP_ID,
-      appKey: APP_KEY
-    });
-  },
+  // created: function () {
+  //   var APP_ID = 'i4bhU8rykSDtrqbBJspGpW4f-9Nh9j0Va';
+  //   var APP_KEY = 'EkljqcRpiVbyvd8SkrGOnT2N';
+  //   AV.init({
+  //     appId: APP_ID,
+  //     appKey: APP_KEY
+  //   });
+  // },
   methods: {
     login (username, password) {
       AV.User.logIn(username, password).then(function (loginedUser) {

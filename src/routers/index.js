@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import All from './All.vue'
-import Good from './Good.vue'
-import Water from './Water.vue'
+
 // import Article from './Article'
 // import SigUp from './SigUp.vue'
 
@@ -17,25 +16,17 @@ export default new VueRouter ({
       component: All,
       children: [
         {
-          path: 'article',
+          path: 'article/:id',
           // component: Article,
         },
       ]
     },
     {
-      path: '/good',
-      component: Good,
-    },
-    {
-      path: '/water',
-      component: Water,
-    },
-    {
-      path: '/sig-up',
+      path: '/sign-up',
       // component: SigUp,
     },
     {
-      path: '/create-topic',
+      path: '/create',
       // component: SigUp,
     },
     {

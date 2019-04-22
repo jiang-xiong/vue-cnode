@@ -5,21 +5,48 @@
         <span>个人信息</span>
       </div>
       <div class="infomation-content">
-        <span id="avatar"></span>
-        <span id="username">username</span>
+        <span id="avatar" @click='loginfo'></span>
+        <span id="username">1{{username}}</span>
       </div>
     </div>
     <div class="cteateTopic">
-      <router-link to='/create-topic'
+      <router-link to='/create'
+                   id="create"
       >发布话题</router-link>
+      <button @click='logout'>登出</button>
     </div>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'Aside',
+import {log} from '../utils/tao.js'
+import AV from 'leancloud-storage'
+
+export default {
+  name: 'Aside',
+  created: function () {
+    var APP_ID = 'i4bhU8rykSDtrqbBJspGpW4f-9Nh9j0Va';
+    var APP_KEY = 'EkljqcRpiVbyvd8SkrGOnT2N';
+    AV.init({
+      appId: APP_ID,
+      appKey: APP_KEY
+    });
+  },
+  data: function () {
+    return {
+      username: AV.User.current().attributes.username,
+    }
+  },
+  methods: {
+    logout() {
+      AV.User.logOut().then(function (e) {
+        log('log out', e)
+      }, function (error) {
+        log('log out error' ,JSON.stringify(error));
+      });
+    }
   }
+}
 </script>
 
 <style scoped>
@@ -49,7 +76,6 @@
     height: 140px;
     background-color: white;
     border-radius: 0 0 3px 3px;
-
     /* display: flex; */
   }
   #avatar {
@@ -68,7 +94,7 @@
     margin-top: 20px; */
     position: relative;
     left: 10px;
-    bottom: 20px;
+    bottom: 18px;
     color: #778087;
   }
   .cteateTopic {
@@ -76,7 +102,7 @@
     height: 50px;
     background-color: white;
   }
-  a {
+  #create {
     background-color: #80bd01;
     display: inline-block;
     color: white;

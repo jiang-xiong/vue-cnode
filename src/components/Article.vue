@@ -2,11 +2,10 @@
   <div class="">
     <div class="article">
       <div class="title">
-        <h1>标题</h1>
-        <span>作者</span>
+        <h1>{{title}}</h1>
       </div>
       <div class="content">
-        内容
+        {{content}}
         <br>
         <br>
       </div>
@@ -15,14 +14,14 @@
           回复
         </div>
         <div v-for='item in comments'>
-          <div class="comments">{{item.comment}}</div>
+          <div class="comments">{{item}}</div>
         </div>
       </div>
       <div class="comment-form-bar">
         添加回复
       </div>
       <div class="comment-form">
-        <textarea v-model='text.comment'
+        <textarea v-model='comment'
         ></textarea>
         <button id='id-comment-button'
                 v-on:click='addComment'
@@ -34,32 +33,88 @@
 </template>
 
 <script>
+import {log} from '../utils/tao.js'
+import AV from 'leancloud-storage'
 export default {
   data: function () {
     return {
-      text: {
-        comment: '',
-      },
+      comment:'',
       comments: [
-        {
-          comment: '1',
-        },
-        {
-          comment: '2',
-        }
-      ]
+      ],
+      title: '',
+      content: '',
+      authorId: '',
+    }
+  },
+  created: function () {
+    var APP_ID = 'i4bhU8rykSDtrqbBJspGpW4f-9Nh9j0Va';
+    var APP_KEY = 'EkljqcRpiVbyvd8SkrGOnT2N';
+    AV.init({
+      appId: APP_ID,
+      appKey: APP_KEY
+    });
+  },
+  mounted: function () {
+    log(this.$route.path.split('/')[2])
+    var id = this.$route.path.split('/')[2]
+    if (id) {
+      log(111)
+      this.appendValue(id)
+    }
+  },
+  watch: {
+    $route(to){
+      // log(to.params.id)
+      // log(this.$route.path.split('/')[2])
+      if (to.params.id) {
+        this.appendValue(to.params.id)
+      }
     }
   },
   methods: {
     addComment() {
-      console.log(this.text.comment)
-      let obj = {}
-      let newObj = Object.assign(obj, this.text)
-      this.comments.push(newObj)
-      this.text.comment = ''
-    }
-  }
+      this.comments.push(this.comment)
+      var comment = AV.Object.createWithoutData('Article', this.$route.path.split('/')[2]);
+      comment.set('comments', this.comments);
+      comment.save();
+      this.comment = ''
+    },
+    appendValue: function(id) {
+      var query = new AV.Query('Article');
+      var currentUser = AV.User.current();
+      var title = ''
+      var content = ''
+      var comments = []
+      if (currentUser !== null) {
+        query.find().then((v) => {
+          for (var i = 0; i < v.length; i++) {
+            if (v[i].id === id) {
+              // log('title' ,v[i].attributes.title)
+              // log('content' ,v[i].attributes.content)
+              // log('author id', v[i].attributes.owner.id)
+              title = v[i].attributes.title
+              content = v[i].attributes.content
+              comments = v[i].attributes.comments
+              // log('title' ,title)
+              // log('content' ,content)
+              this.title = title
+              this.content = content
+              this.comments = comments
+
+              // log('this' ,this)
+              break
+            }
+          }
+        }).catch(function(error) {
+          log(JSON.stringify(error));
+        });
+      } else {
+        log('未登陆')
+      }
+    },
+  },
 }
+
 </script>
 
 <style scoped>

@@ -15,6 +15,9 @@
     <div class="login" v-show='isShowLogin'>
       <Login/>
     </div>
+    <div class="create-topic" v-show='isShowCreate'>
+      <CreateTopic/>
+    </div>
   </div>
 </template>
 
@@ -24,7 +27,7 @@
   import Article from './Article.vue'
   import SignUp from './SignUp.vue'
   import Login from './Login.vue'
-
+  import CreateTopic from './CreateTopic.vue'
   // import {mapGetters} from 'vuex'
   // import {mapActions} from 'vuex';
 
@@ -36,6 +39,7 @@
       Article,
       SignUp,
       Login,
+      CreateTopic,
     },
     // computed: {...mapGetters([
     //   'gettersIsShowPanel',
@@ -47,23 +51,48 @@
         isShowArticle :false,
         isShowSignUp: false,
         isShowLogin: false,
-
+        isShowCreate: false,
+      }
+    },
+    mounted: function () {
+      // console.log('11')
+      console.log(this.$route.path)
+      if (this.$route.path === '/') {
+        this.clearShow()
+        this.isShowPanel = true
+      } else if (this.$route.path.split('/')[1] === 'article') {
+        this.clearShow()
+        this.isShowArticle = true
+      } else if (this.$route.path === '/sign-up') {
+        this.clearShow()
+        this.isShowSignUp = true
+      } else if (this.$route.path === '/login') {
+        this.clearShow()
+        this.isShowLogin = true
+      } else if (this.$route.path === '/create') {
+        this.clearShow()
+        this.isShowCreate = true
       }
     },
     watch: {
-      $route(to,from) {
-        if (to.path === '/article') {
-          this.clearShow()
-          this.isShowArticle = true
-        } else if (to.path === '/') {
+      $route() {
+        // console.log(to.path.split('/')[1])
+        // console.log(this.$route.path)
+        if (this.$route.path === '/') {
           this.clearShow()
           this.isShowPanel = true
-        } else if (to.path === '/sign-up') {
+        } else if (this.$route.path.split('/')[1] === 'article') {
+          this.clearShow()
+          this.isShowArticle = true
+        } else if (this.$route.path === '/sign-up') {
           this.clearShow()
           this.isShowSignUp = true
-        } else if (to.path === '/login') {
+        } else if (this.$route.path === '/login') {
           this.clearShow()
           this.isShowLogin = true
+        } else if (this.$route.path === '/create') {
+          this.clearShow()
+          this.isShowCreate = true
         }
       }
     },
@@ -73,7 +102,7 @@
         this.isShowArticle = false
         this.isShowSignUp = false
         this.isShowLogin = false
-
+        this.isShowCreate = false
       },
     },
   }
@@ -124,5 +153,14 @@
     /* margin-left: 58px; */
     left: 58px;
     top: 15px;
+  }
+  .create-topic {
+    /* float: left; */
+    position: relative;
+    /* margin-top: 15px; */
+    /* margin-bottom: 15px; */
+    /* margin-left: 58px; */
+    left: 29px;
+    top: 8px;
   }
 </style>

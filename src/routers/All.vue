@@ -1,27 +1,67 @@
 <template>
   <div>
-    <div class="topics">
+    <div class="topics" v-for='item in titles'>
       <div class="topic">
         <span id="avatar"></span>
         <span id="replay">
           <span id="replay-left">100</span>
           <span id="replay-right">/100</span>
         </span>
-        <span id="type">类型</span>
-        <router-link to="article"
+        <span id="type">全部</span>
+        <router-link :to="'article/'+item.id"
                      id="title"
-        >标题</router-link>
+        >{{item.title}}</router-link>
         <span id="time">3 小时前</span>
       </div>
+      <!-- {{titles}} -->
     </div>
   </div>
 </template>
 
 <script>
-// import {mapActions} from 'vuex';
+import {log} from '../utils/tao.js'
+import AV from 'leancloud-storage'
 
 export default {
-  // methods: {...mapActions(['hidePanel'])}
+  data: function () {
+    return {
+      titles: []
+    }
+  },
+  created: function () {
+    var APP_ID = 'i4bhU8rykSDtrqbBJspGpW4f-9Nh9j0Va';
+    var APP_KEY = 'EkljqcRpiVbyvd8SkrGOnT2N';
+    AV.init({
+      appId: APP_ID,
+      appKey: APP_KEY
+    });
+  },
+  mounted: function () {
+      var query = new AV.Query('Article');
+      var currentUser = AV.User.current();
+      var a = []
+      if (currentUser !== null) {
+        query.find().then(function (articles) {
+          // log(articles)
+          for (var i = 0; i < articles.length; i++) {
+            var o = {
+              title: '',
+              id: '',
+            }
+            o.title = articles[i].attributes.title
+            o.id = articles[i].id
+            a.push(o)
+            // log(o)
+          }
+          // log('a', a)
+        }).catch(function(error) {
+          // log(JSON.stringify(error));
+        });
+      } else {
+        log('未登陆')
+      }
+      this.titles = a
+  }
 }
 </script>
 
