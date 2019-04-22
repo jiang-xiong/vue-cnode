@@ -2,18 +2,7 @@
   <div>
     <div class="bar clearfix">
       <div class="link">
-        <router-link to="/"
-                     v-bind:class="{ active: showAll }"
-                     v-on:click.native="hightLight('showAll')"
-        >全部</router-link>
-        <router-link to="/good"
-                     v-bind:class="{ active: showGood }"
-                     v-on:click.native="hightLight('showGood')"
-        >精华</router-link>
-        <router-link to="/water"
-                     v-bind:class="{ active: showWater }"
-                     v-on:click.native="hightLight('showWater')"
-        >灌水</router-link>
+        <router-link to="/">全部</router-link>
       </div>
     </div>
     <div class="view">
@@ -23,41 +12,10 @@
 </template>
 
 <script>
-  import {mapGetters} from 'vuex';
 
-  export default {
-    name: 'Teb',
-    data: function () {
-      return {
-        showAll: true,
-        showGood: false,
-        showWater: false,
-      }
-    },
-    methods: {
-      clearActive: function () {
-        this.showAll = false
-        this.showGood = false
-        this.showWater = false
-      },
-      hightLight: function (k) {
-        this.clearActive()
-        this[k] = !this[k]
-      },
-    },
-    created: function () {
-      if(this.$route.path === '/') {
-        this.showAll = true
-      } else if (this.$route.path === '/all') {
-        this.showAll = true
-      } else if (this.$route.path === '/good') {
-        this.showGood = true
-      } else if (this.$route.path === '/water') {
-        this.showWater = true
-      }
-    },
-    // computed: {...mapGetters(['gettersIsShowTeb'])}
-  }
+export default {
+  name: 'Teb',
+}
 </script>
 
 <style scoped>
@@ -71,11 +29,10 @@
     text-align: center;
     font-size: 14px;
     padding-top: 2px;
-    color: #80bd01;
-  }
-  .active {
     color: white;
     background-color: #80bd01;
+  }
+  .active {
 
   }
   .clearfix::after {

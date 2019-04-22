@@ -1,5 +1,18 @@
 <template >
   <div class="aside">
+    <div class="infomation">
+      <div class="infomation-bar">
+        <span>个人信息</span>
+      </div>
+      <div class="infomation-content">
+        <span id="avatar"></span>
+        <span id="username">username</span>
+      </div>
+    </div>
+    <div class="cteateTopic">
+      <router-link to='/create-topic'
+      >发布话题</router-link>
+    </div>
   </div>
 </template>
 
@@ -11,12 +24,69 @@
 
 <style scoped>
   .aside {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     min-height: 200vh;
     min-width: 290px;
-    float: right;
-    margin-top: 15px;
+  }
+  .infomation {
     margin-bottom: 15px;
-    margin-right: 58px;
+    /* border: 1px solid red; */
+  }
+  .infomation-bar {
+    background-color: #f6f6f6;
+    padding-bottom: 10px;
+    border-radius: 3px 3px 0 0;
+    height: 37px;
+    font-size: 13px;
+  }
+  .infomation-bar span {
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 5px;
+    color: #444;
+  }
+  .infomation-content {
+    height: 140px;
+    background-color: white;
+    border-radius: 0 0 3px 3px;
+
+    /* display: flex; */
+  }
+  #avatar {
+    width: 48px;
+    height: 48px;
+    background: #f6f6f6;
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 3px;
+  }
+  #username {
+    /* float: left; */
+    /* text-align: middle; */
+    /* margin-left: 10px;
+    margin-top: 20px; */
+    position: relative;
+    left: 10px;
+    bottom: 20px;
+    color: #778087;
+  }
+  .cteateTopic {
+    border-radius: 3px;
+    height: 50px;
+    background-color: white;
+  }
+  a {
+    background-color: #80bd01;
+    display: inline-block;
+    color: white;
+    width: 84px;
+    height: 34px;
+    border-radius: 3px;
+    text-align: center;
+    padding-top: 8px;
+    margin-left: 10px;
+    margin-top: 8px;
+    font-size: 14px;
   }
 </style>

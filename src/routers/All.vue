@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="topics" v-show='isShowTopics'>
+    <div class="topics">
       <div class="topic">
         <span id="avatar"></span>
         <span id="replay">
@@ -10,26 +10,19 @@
         <span id="type">类型</span>
         <router-link to="article"
                      id="title"
-                     @click.native='hideTopics'
         >标题</router-link>
         <span id="time">3 小时前</span>
       </div>
-    </div>
-
-    <div class="view">
-      <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
+// import {mapActions} from 'vuex';
+
 export default {
-  data: function () {
-    return {
-      isShowTopics: true,
-    }
-  },
-  }
+  // methods: {...mapActions(['hidePanel'])}
+}
 </script>
 
 <style scoped>
@@ -43,7 +36,7 @@ export default {
   #avatar {
     width: 30px;
     height: 30px;
-    background: #80bd01;
+    background: #f6f6f6;
     display: inline-block;
     margin-left: 10px;
     margin-top: 10px;

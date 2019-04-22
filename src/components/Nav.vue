@@ -33,11 +33,4 @@
     margin-right: 25px;
     font-size: 13px;
   }
-  .view {
-    /* position: relative; */
-    /* left: 0px; */
-    /* width: 100px; */
-    border: 1px solid red;
-    z-index: 99;
-  }
 </style>

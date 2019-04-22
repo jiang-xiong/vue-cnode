@@ -1,5 +1,5 @@
 const state = {
-  msg: '我是原始数据',
-  // isShowTeb: true,
+  isShowPanel: true,
+  isShowArticle: false,
 }
 export default state;

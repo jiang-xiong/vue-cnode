@@ -1,6 +1,4 @@
-export const mutationsMsg = (state, payload) => {
-  state.msg = payload.msg;
-}
-export const mutationsIsShowTeb = (state, payload) => {
-  state.isShowTeb = payload.isShowTeb;
+export const mutationsIsShowPanel = (state, payload) => {
+  state.isShowPanel = payload.isShowPanel;
+  state.isShowArticle = payload.isShowArticle;
 }

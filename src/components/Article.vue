@@ -64,9 +64,10 @@ export default {
 
 <style scoped>
   .article {
-    position: absolute;
-    top: 15px;
-    width: 778px;
+    position: relative;
+    /* top: 15px; */
+    /* left: 58px; */
+    max-width: 778px;
     /* border: 1px solid red; */
     background-color: #e5e5e5;
   }

@@ -3,8 +3,8 @@ import VueRouter from 'vue-router'
 import All from './All.vue'
 import Good from './Good.vue'
 import Water from './Water.vue'
-import Article from './Article'
-import SigUp from './SigUp.vue'
+// import Article from './Article'
+// import SigUp from './SigUp.vue'
 
 
 Vue.use(VueRouter)
@@ -18,7 +18,7 @@ export default new VueRouter ({
       children: [
         {
           path: 'article',
-          component: Article,
+          // component: Article,
         },
       ]
     },
@@ -32,7 +32,15 @@ export default new VueRouter ({
     },
     {
       path: '/sig-up',
-      component: SigUp,
+      // component: SigUp,
+    },
+    {
+      path: '/create-topic',
+      // component: SigUp,
+    },
+    {
+      path: '/login',
+      // component: SigUp,
     },
   ]
 })
