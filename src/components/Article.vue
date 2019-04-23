@@ -2,7 +2,6 @@
   <div class="">
     <div class="article">
       <div class="title">
-        <h1>{{title}}</h1>
         <span id="type">全部</span>
         <h2 id="h2">{{title}}</h2>
         <div class="note">
