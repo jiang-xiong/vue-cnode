@@ -12,6 +12,11 @@
         <router-link to='/sign-up'
         >注册</router-link>
       </li>
+      <li>
+        <router-link to='/'
+                     @click.native='logout'
+        >登出</router-link>
+      </li>
     </ul>
     <!-- <div class="view">
       <router-view></router-view>
@@ -21,8 +26,20 @@
 </template>
 
 <script>
+import {log} from '../utils/tao.js'
+import AV from 'leancloud-storage'
+
   export default {
     name: 'Nav',
+    methods: {
+      logout() {
+        AV.User.logOut().then(function (e) {
+          log('log out', e)
+        }, function (error) {
+          log('log out error' ,JSON.stringify(error));
+        });
+      }
+    },
   }
 </script>
 

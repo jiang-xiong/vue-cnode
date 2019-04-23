@@ -5,15 +5,15 @@
         <span>个人信息</span>
       </div>
       <div class="infomation-content">
-        <span id="avatar" @click='loginfo'></span>
-        <span id="username">1{{username}}</span>
+        <span id="avatar"></span>
+        <span id="username">{{username}}</span>
       </div>
     </div>
     <div class="cteateTopic">
       <router-link to='/create'
                    id="create"
       >发布话题</router-link>
-      <button @click='logout'>登出</button>
+      <!-- <button @click='logout'>登出</button> -->
     </div>
   </div>
 </template>
@@ -45,7 +45,7 @@ export default {
         log('log out error' ,JSON.stringify(error));
       });
     }
-  }
+  },
 }
 </script>
 

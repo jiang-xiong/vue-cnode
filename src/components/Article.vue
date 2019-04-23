@@ -3,6 +3,11 @@
     <div class="article">
       <div class="title">
         <h1>{{title}}</h1>
+        <span id="type">全部</span>
+        <h2 id="h2">{{title}}</h2>
+        <div class="note">
+          发布于
+        </div>
       </div>
       <div class="content">
         {{content}}
@@ -14,7 +19,11 @@
           回复
         </div>
         <div v-for='item in comments'>
-          <div class="comments">{{item}}</div>
+          <div class="comments">
+            <span id="avatar"></span>
+            <span id="username">用户</span>
+            <span id="comment">{{item}}</span>
+          </div>
         </div>
       </div>
       <div class="comment-form-bar">
@@ -55,7 +64,7 @@ export default {
     });
   },
   mounted: function () {
-    log(this.$route.path.split('/')[2])
+    // log(this.$route.path.split('/')[2])
     var id = this.$route.path.split('/')[2]
     if (id) {
       log(111)
@@ -85,7 +94,6 @@ export default {
       var title = ''
       var content = ''
       var comments = []
-      if (currentUser !== null) {
         query.find().then((v) => {
           for (var i = 0; i < v.length; i++) {
             if (v[i].id === id) {
@@ -108,9 +116,6 @@ export default {
         }).catch(function(error) {
           log(JSON.stringify(error));
         });
-      } else {
-        log('未登陆')
-      }
     },
   },
 }
@@ -138,6 +143,8 @@ export default {
     background-color: white;
     margin-bottom: 15px;
     border-radius: 0 0 3px 3px;
+    padding-left: 15px;
+    padding-top: 10px;
   }
   .comments {
     background-color: white;
@@ -150,12 +157,20 @@ export default {
     background-color: #f6f6f6;
     border-radius: 3px 3px 0 0;
     border-bottom: 1px solid #e5e5e5;
+    padding-left: 10px;
+    padding-top: 8px;
+    color: #444;
+    font-size: 14px;
   }
   .comment-form-bar {
     height: 42px;
     background-color: #f6f6f6;
     border-radius: 3px 3px 0 0;
     border-bottom: 1px solid #e5e5e5;
+    padding-left: 10px;
+    padding-top: 8px;
+    color: #444;
+    font-size: 14px;
   }
   .comment-form {
     height: 273px;
@@ -171,14 +186,64 @@ export default {
 
   }
   #id-comment-button {
-    width: 50px;
-    height: 30px;
+    width: 52px;
+    height: 34px;
     position: absolute;
-    left: 0px;
-    bottom: 0px;
-    /* outline:none; */
+    left: 10px;
+    bottom: 10px;
+    border-radius: 3px;
+    background-color: #08c;
+    color: white;
+    border: 1px solid transparent;
   }
   .comment {
     margin-bottom: 15px;
+  }
+  #type {
+    background: #80bd01;
+    margin-left: 10px;
+    position: relative;
+    /* display: inline-block; */
+    top: -1px;
+    /* margin-top: px; */
+    border-radius: 3px;
+    color: white;
+    font-size: 12px;
+    padding: 2px 3px 2px 3px;
+  }
+  #h2 {
+    display: inline-block;
+    margin-top: 19px;
+    margin-left: 7px;
+  }
+  .note {
+    font-size: 12px;
+    color: #838383;
+    margin-top: 14px;
+    margin-left: 10px;
+  }
+  #avatar {
+    width: 30px;
+    height: 30px;
+    background: #f6f6f6;
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 3px;
+  }
+  #username {
+    color: #666;
+    font-size: 12px;
+    /* display: inline-block; */
+    /* margin-top: 10px; */
+    position: relative;
+    bottom: 12px;
+    margin-left: 10px;
+  }
+  #comment {
+    /* margin-top: 10px; */
+    position: relative;
+    top: 15px;
+    left: -8px;
   }
 </style>

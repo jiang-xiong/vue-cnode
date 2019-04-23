@@ -40,7 +40,6 @@ export default {
       var query = new AV.Query('Article');
       var currentUser = AV.User.current();
       var a = []
-      if (currentUser !== null) {
         query.find().then(function (articles) {
           // log(articles)
           for (var i = 0; i < articles.length; i++) {
@@ -57,9 +56,6 @@ export default {
         }).catch(function(error) {
           // log(JSON.stringify(error));
         });
-      } else {
-        log('未登陆')
-      }
       this.titles = a
   }
 }
