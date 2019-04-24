@@ -32,18 +32,18 @@ import AV from 'leancloud-storage'
 export default {
   data: function () {
     return {
-      username: 'tao1',
-      password: '123',
+      username: '',
+      password: '',
     }
   },
-  created: function () {
-    var APP_ID = 'i4bhU8rykSDtrqbBJspGpW4f-9Nh9j0Va';
-    var APP_KEY = 'EkljqcRpiVbyvd8SkrGOnT2N';
-    AV.init({
-      appId: APP_ID,
-      appKey: APP_KEY
-    });
-  },
+  // created: function () {
+  //   var APP_ID = 'i4bhU8rykSDtrqbBJspGpW4f-9Nh9j0Va';
+  //   var APP_KEY = 'EkljqcRpiVbyvd8SkrGOnT2N';
+  //   AV.init({
+  //     appId: APP_ID,
+  //     appKey: APP_KEY
+  //   });
+  // },
   methods: {
     signUp (username, password) {
       var user = new AV.User();
@@ -51,6 +51,8 @@ export default {
       user.setPassword(password);
       user.signUp().then(function (loginedUser) {
         log('loginedUser', loginedUser)
+        alert('注册成功')
+        window.location='http://localhost:8080/'
       }, (function (error) {
           log('sign up error', JSON.stringify(error));
       }));

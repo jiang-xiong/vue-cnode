@@ -12,6 +12,7 @@
     <div class="cteateTopic">
       <router-link to='/create'
                    id="create"
+                   @click.native='checkLogin'
       >发布话题</router-link>
       <!-- <button @click='logout'>登出</button> -->
     </div>
@@ -24,14 +25,14 @@ import AV from 'leancloud-storage'
 
 export default {
   name: 'Aside',
-  created: function () {
-    var APP_ID = 'i4bhU8rykSDtrqbBJspGpW4f-9Nh9j0Va';
-    var APP_KEY = 'EkljqcRpiVbyvd8SkrGOnT2N';
-    AV.init({
-      appId: APP_ID,
-      appKey: APP_KEY
-    });
-  },
+  // created: function () {
+  //   var APP_ID = 'i4bhU8rykSDtrqbBJspGpW4f-9Nh9j0Va';
+  //   var APP_KEY = 'EkljqcRpiVbyvd8SkrGOnT2N';
+  //   AV.init({
+  //     appId: APP_ID,
+  //     appKey: APP_KEY
+  //   });
+  // },
   data: function () {
     return {
       username: AV.User.current().attributes.username,
@@ -44,7 +45,14 @@ export default {
       }, function (error) {
         log('log out error' ,JSON.stringify(error));
       });
-    }
+    },
+    checkLogin() {
+      if (AV.User.current()) {
+
+      } else {
+        window.location='http://localhost:8080/login'
+      }
+    },
   },
 }
 </script>

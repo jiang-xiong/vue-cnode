@@ -20,26 +20,35 @@ export default {
     return {
       title: '',
       content: '',
+      comments: [],
     }
   },
+
   methods: {
-    writeToUser(title, content) {
+    writeToUser(title, content, comments) {
       var Article = AV.Object.extend('Article');
       var currentUser = AV.User.current();
       var article = new Article();
       article.set('title', title);
       article.set('content', content);
+      article.set('comments', comments);
+
       article.set('owner', AV.User.current());
       article.save().then(function() {
         log('成功写入信息')
+        alert('发布成功')
       }, function(error) {
         log(JSON.stringify(error));
+        alert('发布失败')
       });
     },
     publish() {
       // log(this.title)
       // log(this.content)
-      this.writeToUser(this.title, this.content)
+
+      this.writeToUser(this.title, this.content, this.comments)
+      window.location='http://localhost:8080/'
+
     },
   }
 }

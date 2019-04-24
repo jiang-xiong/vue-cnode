@@ -2,7 +2,9 @@
   <div>
     <ul id="nav-list">
       <li>
-        <router-link to='/'>首页</router-link>
+        <router-link to='/'
+                     @click.native='reload'
+        >首页</router-link>
       </li>
       <li>
         <router-link to='/login'
@@ -35,9 +37,15 @@ import AV from 'leancloud-storage'
       logout() {
         AV.User.logOut().then(function (e) {
           log('log out', e)
+          alert('登出成功')
+          window.location='http://localhost:8080/'
         }, function (error) {
           log('log out error' ,JSON.stringify(error));
         });
+      },
+      reload() {
+        window.location='http://localhost:8080'
+
       }
     },
   }

@@ -56,7 +56,7 @@
     },
     mounted: function () {
       // console.log('11')
-      console.log(this.$route.path)
+      // console.log(this.$route.path)
       if (this.$route.path === '/') {
         this.clearShow()
         this.isShowPanel = true

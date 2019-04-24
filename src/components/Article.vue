@@ -1,5 +1,7 @@
 <template>
   <div class="">
+    <!-- {{xxx}} -->
+    <!-- {{array}} -->
     <div class="article">
       <div class="title">
         <span id="type">全部</span>
@@ -8,16 +10,16 @@
           发布于
         </div>
       </div>
-      <div class="content">
-        {{content}}
-        <br>
-        <br>
+      <div v-html='content' class="content">
+        <!-- {{content}} -->
+        <!-- <br>
+        <br> -->
       </div>
       <div class="comment">
         <div class="comment-bar">
           回复
         </div>
-        <div v-for='item in comments'>
+        <div v-for="item in array">
           <div class="comments">
             <span id="avatar"></span>
             <span id="username">用户</span>
@@ -37,7 +39,6 @@
       </div>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -47,26 +48,26 @@ export default {
   data: function () {
     return {
       comment:'',
-      comments: [
-      ],
       title: '',
       content: '',
       authorId: '',
+      array:[]
     }
   },
-  created: function () {
-    var APP_ID = 'i4bhU8rykSDtrqbBJspGpW4f-9Nh9j0Va';
-    var APP_KEY = 'EkljqcRpiVbyvd8SkrGOnT2N';
-    AV.init({
-      appId: APP_ID,
-      appKey: APP_KEY
-    });
-  },
+  // created: function () {
+  //   var APP_ID = 'i4bhU8rykSDtrqbBJspGpW4f-9Nh9j0Va';
+  //   var APP_KEY = 'EkljqcRpiVbyvd8SkrGOnT2N';
+  //   AV.init({
+  //     appId: APP_ID,
+  //     appKey: APP_KEY
+  //   });
+  //
+  //
+  // },
   mounted: function () {
     // log(this.$route.path.split('/')[2])
     var id = this.$route.path.split('/')[2]
     if (id) {
-      log(111)
       this.appendValue(id)
     }
   },
@@ -81,10 +82,14 @@ export default {
   },
   methods: {
     addComment() {
-      this.comments.push(this.comment)
-      var comment = AV.Object.createWithoutData('Article', this.$route.path.split('/')[2]);
-      comment.set('comments', this.comments);
-      comment.save();
+      // log('this.comment', this.comment)
+      // log('this.xxx', this.array)
+      this.array.push(this.comment)
+      // log('this.thisComments2', this.array)
+
+      var comments = AV.Object.createWithoutData('Article', this.$route.path.split('/')[2]);
+      comments.set('comments', this.array);
+      comments.save();
       this.comment = ''
     },
     appendValue: function(id) {
@@ -101,14 +106,14 @@ export default {
               // log('author id', v[i].attributes.owner.id)
               title = v[i].attributes.title
               content = v[i].attributes.content
+              content = content.replace(/\n/g,'<br>')
               comments = v[i].attributes.comments
               // log('title' ,title)
               // log('content' ,content)
+              log('comments' ,comments)
               this.title = title
               this.content = content
-              this.comments = comments
-
-              // log('this' ,this)
+              this.array = comments
               break
             }
           }
@@ -144,6 +149,7 @@ export default {
     border-radius: 0 0 3px 3px;
     padding-left: 15px;
     padding-top: 10px;
+    padding-bottom: 15px;
   }
   .comments {
     background-color: white;
@@ -181,8 +187,7 @@ export default {
     height: 243px;
     border: 1px solid transparent;
     outline:none;
-
-
+    font-size: 15px;
   }
   #id-comment-button {
     width: 52px;

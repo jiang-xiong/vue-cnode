@@ -6,6 +6,7 @@ import store from './store/index'; //引入store
 
 Vue.config.productionTip = false
 
+
 new Vue({
   router,
   store,
